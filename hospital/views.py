@@ -66,8 +66,8 @@ class RoomListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         query = self.request.GET.get("q")
         if query is not None:
-            return Room.objects.filter(number__icontains=query)
-        return Room.objects
+            return Room.objects.filter(number__icontains=query).all()
+        return Room.objects.all()
 
 
 class RoomUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -128,7 +128,7 @@ class PatientListView(LoginRequiredMixin,generic.ListView):
     def get_queryset(self):
         query = self.request.GET.get("q")
         if query is not None:
-            return Patient.objects.filter(full_name=query).order_by("full_name")
+            return Patient.objects.filter(full_name__icontains=query).order_by("full_name")
         return Patient.objects.order_by("full_name")
 
 

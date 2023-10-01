@@ -28,7 +28,8 @@
             {% csrf_token %}
             {{ search_form|crispy }}
             <input type="text" name="q" placeholder="Search medicament">
-            <button type="submit"></button>
+            <a class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>Search</a>
+
           </form>
             {% if medicament_list %}
               {% for medicament in medicament_list %}
@@ -54,15 +55,4 @@
     </div>
   </div>
 
-  <style>
-  .custom-table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  .custom-td {
-    border: 1px solid #dddddd;
-    padding: 8px;
-  }
-</style>
 {% endblock %}
