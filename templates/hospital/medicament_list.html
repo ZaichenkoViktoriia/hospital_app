@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 table-title">
+        <div class="d-flex align-items-center justify-content-between">
+          <h1 class="text-center">Medicament List</h1>
+          <div class="d-flex align-items-center">
+            <a class="btn btn-primary" href="{% url 'medicament-create' %}">
+              <i class="fa-solid fa-pills"></i>
+              Create New Medicament
+            </a>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table custom-table">
+            <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% load crispy_forms_filters %}
+          <form action="" method="get">
+            {% csrf_token %}
+            {{ search_form|crispy }}
+            <input type="text" name="q" placeholder="Search medicament">
+            <button type="submit"></button>
+          </form>
+            {% if medicament_list %}
+              {% for medicament in medicament_list %}
+                <tr>
+
+                  <td class="custom-td">{{ medicament.name }}</td>
+                  <td class="custom-td">
+                    <a href="{% url 'medicament-update' pk=medicament.id %}" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen"></i></a></td>
+                  <td class="custom-td">
+                    <a href="{% url 'medicament-delete' pk=medicament.id %}" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                  </td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr>
+                <td colspan="2" class="text-center custom-td">There are no medicaments.</td>
+              </tr>
+            {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+  .custom-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .custom-td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+  }
+</style>
+{% endblock %}

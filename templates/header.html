@@ -1,0 +1,13 @@
+<ul class="header">
+  {% if user.is_authenticated %}
+    <li><a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+  {% else %}
+    <li><a href="{% url 'login' %}">Login</a>
+  {% endif %}
+  <li><a href="{% url "index" %}"><i class="fa-solid fa-hospital"></i>Home</a></li>
+  <li><a href="{% url "department-list" %}"><i class="fa-solid fa-house-medical-flag"></i>Departments</a></li>
+  <li><a href="{% url "assistant-list" %}"><i class="fa-solid fa-user-doctor"></i>Assistants</a></li>
+  <li><a href="{% url "room-list" %}"><i class="fa-solid fa-door-open"></i>Rooms</a></li>
+  <li><a href="{% url "patient-list" %}"><i class="fa-solid fa-hospital-user"></i>Patients</a></li>
+  <li><a href="{% url "medicament-list" %}"><i class="fa-solid fa-pills"></i>Medicaments</a></li>
+</ul>

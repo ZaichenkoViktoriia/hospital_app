@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>{{ object|yesno:"Update,Create" }} Department</h1>
+      <form action="" method="post" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+          {{ form|crispy }}
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

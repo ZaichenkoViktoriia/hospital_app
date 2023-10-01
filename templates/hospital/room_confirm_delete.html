@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{%  block content %}
+  <div class="col-12 table-title">
+  <h1>Delete Room</h1>
+  <div class="col-12 danger-text">
+  <h4>
+    Now you are deleting this room:
+    <p>
+    Room # {{ room.number }} in {{ room.department.name }}</h4>
+    </p>
+    <br>
+  <form action="" method="post">
+    {%  csrf_token %}
+    <input class="btn btn-danger" type="submit" value="Yes, delete">
+    <a class="btn btn-secondary" href="{% url 'room-list' %}">Cancel</a>
+  </form>
+{% endblock %}

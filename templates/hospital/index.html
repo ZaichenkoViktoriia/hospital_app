@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+  <div class="index-top">
+    <h1 style="color: #3D9FC3; margin-top: 20px; z-index: 1">Welcome to Erasmus MC</h1>
+    <div class="hospital-image"></div>
+  </div>
+
+  <div class="tiles">
+    <a class="tile" href="{% url "department-list" %}"><i
+        class="fa-solid fa-house-medical-flag"></i>Departments</a>
+    <a class="tile" href="{% url "medicament-list" %}"><i class="fa-solid fa-pills"></i>Medicaments</a>
+    <a class="tile" href="{% url "assistant-list" %}"><i class="fa-solid fa-user-doctor"></i>Assistants</a>
+    <a class="tile" href="{% url "patient-list" %}"><i class="fa-solid fa-hospital-user"></i>Patients</a>
+  </div>
+
+
+  <div class="contact-info">
+    <div>
+      <h4>Contact info:</h4>
+      <ul>
+        <li><i class="fa-regular fa-envelope"></i>Email: erasmusmc@gmail.com</li>
+        <li><i class="fa-solid fa-phone"></i>Phone number: +31 10 704 0 704</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Visiting hours:</h4>
+      <ul>
+        <li><i class="fa-regular fa-clock"></i>Mon-Fri: 3pm-4:30pm</li>
+        <li><i class="fa-regular fa-clock"></i>Sat-Sun: 1:30pm-4:30pm</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Address:</h4>
+      <ul>
+        <li><i class="fa-solid fa-location-dot"></i>Wytemaweg 80</li>
+        <li><i class="fa-solid fa-location-dot"></i>3015 CN Rotterdam</li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1 class="table-title">Room List</h1>
+        <div class="table-responsive">
+          <table class="table custom-table table-title">
+            <thead>
+            <tr>
+              <th scope="col">Room Number</th>
+              <th scope="col">Department Name</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% load crispy_forms_filters %}
+          <form action="" method="get">
+            {% csrf_token %}
+            {{ search_form|crispy }}
+            <input type="text" name="q" placeholder="Search room">
+            <button type="submit"></button>
+          </form>
+            {% if room_list %}
+
+              {% for room in room_list %}
+                <tr>
+                  <td class="custom-td">{{ room.number }} </td>
+                  <td class="custom-td"><a href="{% url 'department-detail' pk=room.department.id %}"
+                                           class="table-title">{{ room.department.name }}</a></td>
+                  <td class="custom-td">
+                    <a href="{% url 'room-update' pk=room.id %}" class="btn btn-sm btn-primary"><i
+                        class="fa-solid fa-pen"></i></a>
+                  </td>
+                  <td class="custom-td">
+                    <a href="{% url 'room-delete' pk=room.id %}" class="btn btn-sm btn-danger"><i
+                        class="fa-solid fa-trash"></i></a>
+                  </td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr>
+                <td colspan="3" class="text-center">No rooms found.</td>
+              </tr>
+            {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <style>
+  .custom-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .custom-td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+  }
+</style>
+{% endblock %}

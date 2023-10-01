@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 table-title">
+        <div class="d-flex align-items-center justify-content-between">
+          <h1 class="text-center">Patient List</h1>
+          <div class="d-flex align-items-center">
+            <a class="btn btn-primary" href="{% url 'patient-create' %}">
+              <i class="fa-regular fa-user"></i>
+              Create New Patient
+            </a>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table custom-table table-title">
+            <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Room number</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% load crispy_forms_filters %}
+          <form action="" method="get">
+            {% csrf_token %}
+            {{ search_form|crispy }}
+            <input type="text" name="q" placeholder="Search patient">
+            <button type="submit"></button>
+          </form>
+            {% if patient_list %}
+              {% for patient in patient_list %}
+                <tr>
+                  <td class="custom-td">
+                    <a href="{% url 'patient-detail' pk=patient.id %}">{{ patient.full_name }}</a></td>
+                  <td class="custom-td">{{ patient.room.number }}
+                  </td>
+                  <td class="custom-td">
+                    <a href="{% url 'patient-update' pk=patient.id %}" class="btn btn-sm btn-primary"><i
+                        class="fa-solid fa-pen"></i></a></td>
+                  <td class="custom-td">
+                    <a href="{% url 'patient-delete' pk=patient.id %}" class="btn btn-sm btn-danger"><i
+                        class="fa-solid fa-trash"></i></a>
+                  </td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr>
+                <td colspan="2" class="text-center custom-td">There are no patients.</td>
+              </tr>
+            {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <style>
+  .custom-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .custom-td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+  }
+</style>
+{% endblock %}

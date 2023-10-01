@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="patient-info table-title">
+    <h4> Patient Name: {{ patient.full_name }}</h4>
+    <p class="info-row"> In Room: {{ patient.room.number}}</p>
+    <p class="info-row"> In department: {{ patient.room.department.name}}</p>
+    <p class="info-row"> With diagnosis: {{ patient.diagnosis }}</p>
+    <p class="info-row"> Medicament for this patient: {{ patient.medicament }}</p>
+    <h4 class="info-row"> Contact info:</h4>
+    <p class="info-row"> Home address: {{ patient.home_address }}</p>
+    <p class="info-row"> Phone number: {{ patient.phone_number }}</p>
+  </div>
+{% endblock %}

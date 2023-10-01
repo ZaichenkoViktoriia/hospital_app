@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="col-md-8  table-title">
+  <h4> Rooms in this department: </h4>
+  <ul>
+    {% for room in rooms %}
+      <li>{{ room.number }}</li>
+    {% endfor %}
+  </ul>
+  </div>
+  Here you can see full list of the rooms in all departments:
+   <a href="{% url 'room-list'%}" class="btn btn-sm btn-primary">Open</a>
+
+{% endblock %}
