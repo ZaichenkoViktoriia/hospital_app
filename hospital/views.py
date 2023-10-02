@@ -8,7 +8,6 @@ from django.views import generic
 from hospital.models import Department, Medicament, Room, Patient, Assistant
 
 
-@login_required
 def index(request: HttpRequest) -> render:
     context = {
         "current_date": "SOME INFO"

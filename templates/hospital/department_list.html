@@ -21,7 +21,7 @@
             {% csrf_token %}
             {{ search_form|crispy }}
             <input type="text" name="q" placeholder="Search department">
-            <a class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>Search</a>
+            <a class="btn btn-primary"><i class="fa-solid fa-magnifying-glass" style="color: white"></i></a>
           </form>
 
             {% if department_list %}
