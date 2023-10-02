@@ -28,7 +28,7 @@
             {% csrf_token %}
             {{ search_form|crispy }}
             <input type="text" name="q" placeholder="Search medicament">
-            <a class="btn btn-primary"><i class="fa-solid fa-magnifying-glass" style="color: white"></i></a>
+            <button type="submit" class="btn btn-primary">Search</button>
 
           </form>
             {% if medicament_list %}
