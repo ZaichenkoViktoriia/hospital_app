@@ -1,5 +1,5 @@
 # hospital_app
-login: hospital.admin
+login: hospital.admin      
 password: 9900py
 
 An application for managing medical practice in a hospital by an administrator.
