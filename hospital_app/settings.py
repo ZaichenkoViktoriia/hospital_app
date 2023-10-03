@@ -132,8 +132,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "hospital.Doctor"
 
-LOGIN_REDIRECT_URL = "/"
 
+LOGIN_REDIRECT_URL = 'index'
+
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'login'
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -20,15 +20,42 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from hospital.views import index, DepartmentListView, MedicamentListView, RoomListView, \
-    DepartmentCreateView, DepartmentDeleteView, DepartmentUpdateView, MedicamentUpdateView, MedicamentDeleteView, \
-    AssistantListView, AssistantCreateView, RoomUpdateView, RoomDeleteView, MedicamentCreateView, AssistantUpdateView, \
-    AssistantDeleteView, PatientCreateView, PatientListView, PatientUpdateView, PatientDeleteView, PatientDetailView, \
-    DepartmentDetailView
+from authentication.views import CustomLoginView, CustomLogoutView
+from hospital.views import (
+    index,
+    DepartmentListView,
+    DepartmentDetailView,
+    DepartmentCreateView,
+    DepartmentDeleteView,
+    DepartmentUpdateView,
+
+    RoomListView,
+    RoomUpdateView,
+    RoomDeleteView,
+
+    MedicamentListView,
+    MedicamentUpdateView,
+    MedicamentDeleteView,
+    MedicamentCreateView,
+
+    AssistantListView,
+    AssistantCreateView,
+    AssistantUpdateView,
+    AssistantDeleteView,
+
+    PatientCreateView,
+    PatientListView,
+    PatientUpdateView,
+    PatientDeleteView,
+    PatientDetailView,
+
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('hospital.urls', 'hospital'), namespace='hospital')),
+    path('login/', CustomLoginView.as_view(), name='login'),
+    path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('', index, name="index"),
     path("departments/", DepartmentListView.as_view(),
          name="department-list"),

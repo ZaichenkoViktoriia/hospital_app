@@ -5,15 +5,17 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from hospital.models import Department, Medicament, Room, Patient, Assistant
+from hospital.models import (
+    Department,
+    Medicament,
+    Room,
+    Patient,
+    Assistant
+)
 
 
-@login_required
 def index(request: HttpRequest) -> render:
-    context = {
-        "current_date": "SOME INFO"
-    }
-    return render(request, "hospital/index.html", context=context)
+    return render(request, "hospital/index.html")
 
 
 class DepartmentListView(LoginRequiredMixin, generic.ListView):
@@ -66,8 +68,8 @@ class RoomListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         query = self.request.GET.get("q")
         if query is not None:
-            return Room.objects.filter(number__icontains=query)
-        return Room.objects
+            return Room.objects.filter(number__icontains=query).all()
+        return Room.objects.all()
 
 
 class RoomUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -128,17 +130,17 @@ class PatientListView(LoginRequiredMixin,generic.ListView):
     def get_queryset(self):
         query = self.request.GET.get("q")
         if query is not None:
-            return Patient.objects.filter(full_name=query).order_by("full_name")
+            return Patient.objects.filter(full_name__icontains=query).order_by("full_name")
         return Patient.objects.order_by("full_name")
 
 
-class PatientCreateView(LoginRequiredMixin,generic.CreateView):
+class PatientCreateView(LoginRequiredMixin, generic.CreateView):
     model = Patient
     fields = "__all__"
     success_url = reverse_lazy("patient-list")
 
 
-class PatientDetailView(LoginRequiredMixin,generic.DetailView):
+class PatientDetailView(LoginRequiredMixin, generic.DetailView):
     model = Patient
     queryset = Patient.objects.select_related("medicament")
 

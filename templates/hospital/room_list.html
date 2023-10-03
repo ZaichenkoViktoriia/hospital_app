@@ -21,7 +21,7 @@
             {% csrf_token %}
             {{ search_form|crispy }}
             <input type="text" name="q" placeholder="Search room">
-            <button type="submit"></button>
+            <button type="submit" class="btn btn-primary">Search</button>
           </form>
             {% if room_list %}
 
@@ -52,15 +52,4 @@
     </div>
   </div>
 
- <style>
-  .custom-table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  .custom-td {
-    border: 1px solid #dddddd;
-    padding: 8px;
-  }
-</style>
 {% endblock %}
