@@ -5,14 +5,17 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from hospital.models import Department, Medicament, Room, Patient, Assistant
+from hospital.models import (
+    Department,
+    Medicament,
+    Room,
+    Patient,
+    Assistant
+)
 
 
 def index(request: HttpRequest) -> render:
-    context = {
-        "current_date": "SOME INFO"
-    }
-    return render(request, "hospital/index.html", context=context)
+    return render(request, "hospital/index.html")
 
 
 class DepartmentListView(LoginRequiredMixin, generic.ListView):
@@ -131,13 +134,13 @@ class PatientListView(LoginRequiredMixin,generic.ListView):
         return Patient.objects.order_by("full_name")
 
 
-class PatientCreateView(LoginRequiredMixin,generic.CreateView):
+class PatientCreateView(LoginRequiredMixin, generic.CreateView):
     model = Patient
     fields = "__all__"
     success_url = reverse_lazy("patient-list")
 
 
-class PatientDetailView(LoginRequiredMixin,generic.DetailView):
+class PatientDetailView(LoginRequiredMixin, generic.DetailView):
     model = Patient
     queryset = Patient.objects.select_related("medicament")
 

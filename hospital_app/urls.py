@@ -21,11 +21,35 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from authentication.views import CustomLoginView, CustomLogoutView
-from hospital.views import index, DepartmentListView, MedicamentListView, RoomListView, \
-    DepartmentCreateView, DepartmentDeleteView, DepartmentUpdateView, MedicamentUpdateView, MedicamentDeleteView, \
-    AssistantListView, AssistantCreateView, RoomUpdateView, RoomDeleteView, MedicamentCreateView, AssistantUpdateView, \
-    AssistantDeleteView, PatientCreateView, PatientListView, PatientUpdateView, PatientDeleteView, PatientDetailView, \
-    DepartmentDetailView
+from hospital.views import (
+    index,
+    DepartmentListView,
+    DepartmentDetailView,
+    DepartmentCreateView,
+    DepartmentDeleteView,
+    DepartmentUpdateView,
+
+    RoomListView,
+    RoomUpdateView,
+    RoomDeleteView,
+
+    MedicamentListView,
+    MedicamentUpdateView,
+    MedicamentDeleteView,
+    MedicamentCreateView,
+
+    AssistantListView,
+    AssistantCreateView,
+    AssistantUpdateView,
+    AssistantDeleteView,
+
+    PatientCreateView,
+    PatientListView,
+    PatientUpdateView,
+    PatientDeleteView,
+    PatientDetailView,
+
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

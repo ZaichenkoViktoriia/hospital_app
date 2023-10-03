@@ -53,7 +53,7 @@ class Patient(models.Model):
         on_delete=models.CASCADE,
         related_name="patients"
     )
-    medicament = models.ForeignKey("Medicament", on_delete=models.CASCADE, related_name="patients", default=None)
+    medicament = models.ManyToManyField("Medicament", related_name="patients", default=None)
 
     def __str__(self):
         return f"{self.full_name} {self.room} {self.diagnosis}"
