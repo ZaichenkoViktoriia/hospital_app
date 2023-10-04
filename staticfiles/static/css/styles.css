@@ -125,7 +125,7 @@ main {
 .hospital-image {
     height: 630px;
     width: 100%;
-    background: no-repeat url("../image/doctors.jpg");
+    background: no-repeat url("doctors.jpg");
     background-size: cover;
     background-position: center;
     position: absolute;

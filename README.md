@@ -2,6 +2,8 @@
 login: hospital.admin      
 password: 9900py
 
+Project deployed to Render(https://hospital-mc.onrender.com/)
+
 An application for managing medical practice in a hospital by an administrator.
 All users can see the first "Home" page. 
 To view, edit, or delete info on this page you must have an Admin login and password.
