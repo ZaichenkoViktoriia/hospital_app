@@ -1,6 +1,8 @@
 # hospital_app
-login: hospital.admin      
+```python
+login: hospital.admin
 password: 9900py
+```
 
 Project deployed to Render(https://hospital-mc.onrender.com/)
 
@@ -16,7 +18,7 @@ Here is an implementation of these features:
 5. Searching and pagination for every table
 6. Navigation between models, where possible and appropriate, using clickable links between models
 
-
+```python
 Installation:
 git clone https://github.com/ZaichenkoViktoriia/hospital_app/
 cd hospital_app
@@ -26,3 +28,13 @@ pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
+```
+
+if you want to use previous info for this project you can run this command and load some info
+```python
+python manage.py loaddata db.json
+```
+or you can use the button "Create" to create new info for this project
+
+
+[Demo](static/image/demo.jpg)
