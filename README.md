@@ -23,9 +23,9 @@ Installation:
 git clone https://github.com/ZaichenkoViktoriia/hospital_app/
 cd hospital_app
 python3 -m venv venv
-source venv\Scripts\activate
+venv\Scripts\activate (Windows)
+source venv/bin/activate (macOS)
 pip install -r requirements.txt
-python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
