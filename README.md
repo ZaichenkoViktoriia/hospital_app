@@ -28,8 +28,8 @@ source venv/bin/activate (macOS)
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
-
 ```
+
 if you want to use previous info for this project you can run this command and load some info
 ```python
 python manage.py loaddata db.json
